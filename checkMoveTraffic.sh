@@ -8,7 +8,7 @@ do
 	
 	while IFIN= read -r lineservers
 	do
-		echo `mysql -h $lineservers -p$pass -u dbschema -sN -e "select * from mysql.user where user='movetrafficuser'"` $lineservers >> ./newUserInfo.csv
+		echo `mysql -h $lineservers -p$pass -u dbschema -sN -e "select * from mysql.user where user='movetrafficuser' and host='10.%'"` $lineservers >> ./newUserInfo.csv
 	done < ./listServers
         if [ count -eq 0 ]; then
 		break;
